@@ -4,14 +4,18 @@ import io.vertx.core.AbstractVerticle
 import io.vertx.core.Promise
 import io.vertx.core.Vertx
 import io.vertx.ext.web.Router
+import io.vertx.ext.web.handler.BodyHandler
 import nl.infowijs.codeassignment.controllers.HealthController
+import nl.infowijs.codeassignment.controllers.MessagesController
 
 class MainVerticle : AbstractVerticle() {
+  private val messagesController = MessagesController()
   fun createRouter(vertx: Vertx) = Router.router(vertx).apply {
-//    val messagesController = MessagesController()
     get("/healthz").handler(HealthController.healthCheck)
-    // TODO: Implement this API later!
-//    get("/chat").handler(messagesController::listMessages)
+    get("/messages").produces("application/json").handler(messagesController::listMessages)
+
+    //fixme This should be sent as a application/json instead of a text/plain. Running into trouble with decoding JSON into an object
+    post("/messages").consumes("text/plain").handler(BodyHandler.create()).handler(messagesController::storeMessage)
   }
 
   override fun start(startPromise: Promise<Void>) {

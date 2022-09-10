@@ -7,7 +7,7 @@ data class Message(val message: String, val datetime: Instant, val person: Perso
   fun toJsonObject(): JsonObject {
     return JsonObject()
       .put("message", message)
-      .put("datatime", datetime)
+      .put("datetime", datetime)
       .put("person", person.toJsonObject())
   }
 }
