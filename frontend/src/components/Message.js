@@ -8,7 +8,7 @@ export default function Message({ message, person, datetime }) {
             <h3 className="text-sm font-medium">{person.name}</h3>
             <p className="text-sm text-gray-500" title={datetime.format("LLL")}>{datetime.fromNow()}</p>
           </div>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-500 whitespace-pre-line">
             {message}
           </p>
         </div>
