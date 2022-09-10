@@ -1,7 +1,7 @@
 import dayjs from "dayjs"
 
 export default function Message({ message, person, datetime }) {
-  
+
   return (
     <li className="py-4">
       <div className="flex space-x-3">

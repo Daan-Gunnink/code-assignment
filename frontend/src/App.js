@@ -12,6 +12,7 @@ import {
 import { SearchIcon } from '@heroicons/react/solid';
 import Chat from './components/Chat';
 import Contacts from './components/Contacts';
+import NewMessageModal from './components/NewMessageModal';
 
 
 const userNavigation = [
@@ -20,6 +21,11 @@ const userNavigation = [
 
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isMessageModalVisible, setMessageModalVisibility] = useState(false)
+
+ 
+
+
 
   return (
     <div className="h-full flex">
@@ -104,6 +110,9 @@ export default function App() {
 
                 <button
                   type="button"
+                  onClick={() =>   {
+                    console.log(isMessageModalVisible)
+                      setMessageModalVisibility(true)}}
                   className="flex bg-indigo-600 p-1 rounded-full items-center justify-center text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   <PlusSmIcon className="h-6 w-6" aria-hidden="true" />
@@ -133,7 +142,10 @@ export default function App() {
             <Contacts />
           </aside>
         </div>
+
+
       </div>
+      <NewMessageModal messageModalVisible={isMessageModalVisible} />
     </div>
   );
 }
