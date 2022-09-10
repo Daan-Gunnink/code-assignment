@@ -11,7 +11,11 @@ export default function Contacts() {
 
   useEffect(() => {
     axios.get(`http://localhost:8888/contacts`).then((response) => {
-      setContacts(response.data.data[0])
+
+      //This is quite hacky as we can't really be sure that the last entry in the name string, is actually the last name. Better would be to have seperate fields for first and last name
+      const sortedContacts =  response.data.data[0].sort((a,b) => (a.name.split(" ").pop() > b.name.split(" ").pop()) ? 1 : ((b.name.split(" ").pop() >a.name.split(" ").pop()) ? -1 : 0))
+      
+      setContacts(sortedContacts)
     });
   }, []);
 
