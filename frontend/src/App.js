@@ -145,7 +145,9 @@ export default function App() {
 
 
       </div>
-      <NewMessageModal messageModalVisible={isMessageModalVisible} />
+      <NewMessageModal messageModalVisible={isMessageModalVisible} postedMessage={() => {
+        setMessageModalVisibility(false)
+      }} />
     </div>
   );
 }

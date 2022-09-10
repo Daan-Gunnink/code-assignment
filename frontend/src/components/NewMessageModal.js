@@ -2,7 +2,7 @@ import { Transition } from "@headlessui/react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function NewMessageModal({ messageModalVisible }) {
+export default function NewMessageModal({ messageModalVisible, postedMessage }) {
   const [isMessageModalVisible, setMessageModalVisibility] = useState(false);
   const [message, setMessage] = useState(null);
 
@@ -16,12 +16,14 @@ export default function NewMessageModal({ messageModalVisible }) {
         headers: {
           "content-type": "text/plain",
         },
-      })
+      }).then(
+        postedMessage()
+      )
   }
 
   return (
     <Transition.Root
-      show={isMessageModalVisible}
+      show={messageModalVisible}
       style={{
         width: "100%",
         height: "100%",
@@ -40,7 +42,6 @@ export default function NewMessageModal({ messageModalVisible }) {
           className="flex-none m-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
           onClick={() => {
             handleClick();
-            setMessageModalVisibility(false);
           }}
         >
           Send
