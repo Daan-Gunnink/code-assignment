@@ -1,16 +1,12 @@
 package nl.infowijs.codeassignment.controllers
 
-import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
-import io.vertx.core.json.impl.JsonUtil
 import io.vertx.ext.web.RoutingContext
 import nl.infowijs.codeassignment.data.Contacts
 import nl.infowijs.codeassignment.models.Message
-import nl.infowijs.codeassignment.models.NewMessage
 import nl.infowijs.codeassignment.modules.WebResponse
 import java.time.Clock
 import java.time.Instant
-import java.util.*
 
 class MessagesController{
 
