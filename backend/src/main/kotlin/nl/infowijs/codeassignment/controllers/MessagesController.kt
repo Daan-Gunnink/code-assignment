@@ -7,6 +7,7 @@ import nl.infowijs.codeassignment.models.Message
 import nl.infowijs.codeassignment.modules.WebResponse
 import java.time.Clock
 import java.time.Instant
+import java.util.*
 
 class MessagesController{
 
@@ -18,8 +19,6 @@ class MessagesController{
   }
 
   fun storeMessage(routingContext: RoutingContext){
-    print("found ${routingContext.body().asString()}")
-
     //fixme This should be sent as a JSON instead of a raw string. Running into trouble with decoding JSON into an object
     val newMessage = routingContext.body().asString()
 
@@ -28,6 +27,7 @@ class MessagesController{
 
     storedMessages.add(
       Message(
+        id = UUID.randomUUID().toString(),
         message = newMessage,
         datetime = Instant.now(Clock.systemUTC()),
         person = contact
