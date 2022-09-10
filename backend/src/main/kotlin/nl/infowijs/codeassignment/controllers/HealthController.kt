@@ -6,7 +6,7 @@ import io.vertx.ext.web.RoutingContext
 class HealthController {
   companion object {
     val healthCheck = Handler<RoutingContext> { req ->
-      req.response().setStatusCode(200).end("Remove this.")
+      req.response().setStatusCode(204).end()
     }
   }
 }
