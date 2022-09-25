@@ -3,7 +3,7 @@ package nl.infowijs.codeassignment.models
 import io.vertx.core.json.JsonObject
 import java.time.Instant
 
-data class Message(val id: String, val message: String, val datetime: Instant, val contactId: String) {
+data class MyMessage(val id: String, val message: String, val datetime: Instant, val contactId: String) {
   fun toJsonObject(): JsonObject {
     return JsonObject()
       .put("id", id)
